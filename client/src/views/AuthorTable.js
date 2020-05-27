@@ -10,7 +10,9 @@ const AuthorTable = () => {
     useEffect( ()=> {
         axios.get("http://localhost:8000/api/author")
             .then(res => {
-                setAuthors(res.data);
+                setAuthors(res.data.sort((a1, a2) =>
+                a1.name > a2.name ? 1: -1
+                ));
                 setLoaded(true);
             })
     }, [])
